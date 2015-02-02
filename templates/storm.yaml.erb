@@ -3,8 +3,8 @@
 
 #_ CORE _#
 java.library.path: "<%= scope.lookupvar('storm::params::java_library_path').join(':') %>"
-storm.local.dir: "<%= scope.lookupvar('storm::params::storm_local_dir') %>"
-storm.cluster.mode: "<%= scope.lookupvar('storm::params::storm_cluster_mode') %>"
+storm.local.dir: "<%= scope.lookupvar('storm::local_dir') %>"
+storm.cluster.mode: "<%= scope.lookupvar('storm::cluster_mode') %>"
 storm.local.mode.zmq: <%= scope.lookupvar('storm::params::storm_local_mode_zmq') %>
 
 #_ ZOOKEEPER _#
@@ -12,17 +12,17 @@ storm.zookeeper.servers:
 <% scope.lookupvar('storm::params::storm_zookeeper_servers').each do |z| -%>
     - "<%= z %>"
 <% end-%>
-storm.zookeeper.port: <%= scope.lookupvar('storm::params::storm_zookeeper_port') %>
-storm.zookeeper.root: "<%= scope.lookupvar('storm::params::storm_zookeeper_root') %>"
-storm.zookeeper.session.timeout: <%= scope.lookupvar('storm::params::storm_zookeeper_session_timeout') %>
-storm.zookeeper.retry.times: <%= scope.lookupvar('storm::params::storm_zookeeper_retry_times') %>
-storm.zookeeper.retry.interval: <%= scope.lookupvar('storm::params::storm_zookeeper_retry_interval') %>
+storm.zookeeper.port: <%= scope.lookupvar('storm::zookeeper_port') %>
+storm.zookeeper.root: "<%= scope.lookupvar('storm::zookeeper_root') %>"
+storm.zookeeper.session.timeout: <%= scope.lookupvar('storm::zookeeper_session_timeout') %>
+storm.zookeeper.retry.times: <%= scope.lookupvar('storm::zookeeper_retry_times') %>
+storm.zookeeper.retry.interval: <%= scope.lookupvar('storm::zookeeper_retry_interval') %>
 dev.zookeeper.path: "<%= scope.lookupvar('storm::params::dev_zookeeper_path') %>"
 
 #_ NIMBUS _#
-nimbus.host: "<%= scope.lookupvar('storm::params::nimbus_host') %>"
-nimbus.thrift.port: <%= scope.lookupvar('storm::params::nimbus_thrift_port') %>
-nimbus.childopts: "<%= scope.lookupvar('storm::params::nimbus_childopts') %>"
+nimbus.host: "<%= scope.lookupvar('storm::nimbus_host') %>"
+nimbus.thrift.port: <%= scope.lookupvar('storm::nimbus_thrift_port') %>
+nimbus.childopts: "<%= scope.lookupvar('storm::nimbus_childopts') %>"
 nimbus.task.timeout.secs: <%= scope.lookupvar('storm::params::nimbus_task_timeout_secs') %>
 nimbus.supervisor.timeout.secs: <%= scope.lookupvar('storm::params::nimbus_supervisor_timeout_secs') %>
 nimbus.monitor.freq.secs: <%= scope.lookupvar('storm::params::nimbus_monitor_freq_secs') %>
@@ -33,27 +33,27 @@ nimbus.reassign: <%= scope.lookupvar('storm::params::nimbus_reassign') %>
 nimbus.file.copy.expiration.secs: <%= scope.lookupvar('storm::params::nimbus_file_copy_expiration_secs') %>
 
 #_ UI _#
-ui.port: <%= scope.lookupvar('storm::params::ui_port') %>
-ui.childopts: "<%= scope.lookupvar('storm::params::ui_childopts') %>"
+ui.port: <%= scope.lookupvar('storm::ui_port') %>
+ui.childopts: "<%= scope.lookupvar('storm::ui_childopts') %>"
 
 #_ DRPC _#
-drpc.port: <%= scope.lookupvar('storm::params::drpc_port') %>
-drpc.invocations.port: <%= scope.lookupvar('storm::params::drpc_invocations_port') %>
-drpc.request.timeout.secs: <%= scope.lookupvar('storm::params::drpc_request_timeout_secs') %>
+drpc.port: <%= scope.lookupvar('storm::drpc_port') %>
+drpc.invocations.port: <%= scope.lookupvar('storm::drpc_invocations_port') %>
+drpc.request.timeout.secs: <%= scope.lookupvar('storm::drpc_request_timeout_secs') %>
 
 transactional.zookeeper.root: "<%= scope.lookupvar('storm::params::transactional_zookeeper_root') %>"
 transactional.zookeeper.servers: <%= scope.lookupvar('storm::params::transactional_zookeeper_servers') %>
 transactional.zookeeper.port: <%= scope.lookupvar('storm::params::transactional_zookeeper_port') %>
 
 #_ SUPERVISOR _#
-supervisor.slots.ports: <% for i in (scope.lookupvar('storm::params::supervisor_start_port').to_i ... (scope.lookupvar('storm::params::supervisor_start_port').to_i + scope.lookupvar('storm::params::supervisor_workers').to_i)) %>
+supervisor.slots.ports: <% for i in (scope.lookupvar('storm::supervisor_start_port').to_i ... (scope.lookupvar('storm::supervisor_start_port').to_i + scope.lookupvar('storm::supervisor_workers').to_i)) %>
     - <%= i %><% end %>
-supervisor.childopts: "<%= scope.lookupvar('storm::params::supervisor_childopts') %>"
+supervisor.childopts: "<%= scope.lookupvar('storm::supervisor_childopts') %>"
 supervisor.worker.start.timeout.secs: <%= scope.lookupvar('storm::params::supervisor_worker_start_timeout_secs') %>
 supervisor.worker.timeout.secs: <%= scope.lookupvar('storm::params::supervisor_worker_timeout_secs') %>
 supervisor.monitor.frequency.secs: <%= scope.lookupvar('storm::params::supervisor_monitor_frequency_secs') %>
 supervisor.heartbeat.frequency.secs: <%= scope.lookupvar('storm::params::supervisor_heartbeat_frequency_secs') %>
-supervisor.enable: <%= scope.lookupvar('storm::params::supervisor_enable') %>
+supervisor.enable: <%= scope.lookupvar('storm::supervisor_enable') %>
 
 #_ WORKER _#
 worker.childopts: "<%= scope.lookupvar('storm::params::worker_childopts') %>"

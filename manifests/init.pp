@@ -36,8 +36,37 @@
 # Copyright 2015 Kaya Kupferschmidt, unless otherwise noted.
 #
 class storm (
-    $version = $storm::params::storm_version,
-    $homedir = $storm::params::storm_home
+  $version = $storm::params::storm_version,
+  $homedir = $storm::params::storm_home,
+
+  $local_dir = $storm::params::storm_local_dir
+  $cluster_mode = $storm::params::storm_cluster_mode
+
+  $zookeeper_servers = $storm::params::storm_zookeeper_servers
+  $zookeeper_port = $storm::params::storm_zookeeper_port
+  $zookeeper_root = $storm::params::storm_zookeeper_root
+  $zookeeper_session_timeout = $storm::params::storm_zookeeper_session_timeout
+  $zookeeper_retry_times = $storm::params::storm_zookeeper_retry_times
+  $zookeeper_retry_interval = $storm::params::storm_zookeeper_retry_interval
+
+  $nimbus_host = $storm::params::nimbus_host
+  $nimbus_thrift_port = $storm::params::nimbus_thrift_port
+  $nimbus_childopts = $storm::params::nimbus_childopts
+
+  $ui_port = $storm::params::ui_port
+  $ui_childopts = $storm::params::ui_childopts
+
+  $drpc_port = $storm::params::drpc_port
+  $drpc_servers = $storm::params::drpc_servers
+  $drpc_invocations_port = $storm::params::drpc_invocations_port
+
+  $supervisor_start_port = $storm::params::supervisor_start_port
+  $supervisor_workers = $storm::params::supervisor_workers
+  $supervisor_childopts = $storm::params::supervisor_childopts
+  $supervisor_enable = $storm::params::supervisor_enable
+
+  $worker_childopts = $storm::params::worker_childopts
+    
 ) inherits storm::params
 {
   include java
@@ -45,3 +74,4 @@ class storm (
   include storm::install
   include storm::config
 }
+

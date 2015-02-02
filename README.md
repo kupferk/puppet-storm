@@ -13,67 +13,70 @@
 5. [Limitations - OS compatibility, etc.](#limitations)
 6. [Development - Guide for contributing to the module](#development)
 
+
+<a name="overview"></a>
 ## Overview
 
-A one-maybe-two sentence summary of what the module does/what problem it solves.
-This is your 30 second elevator pitch for your module. Consider including
-OS/Puppet version it works with.
+The storm module will install Apache Storm and configure it.
 
+
+<a name="module-description"></a>
 ## Module Description
 
-If applicable, this section should have a brief description of the technology
-the module integrates with and what that integration enables. This section
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?"
+The storm module will install Apache Storm and configure it. The installation
+will be performed from a tgz archieve downloaded from apache.org.
 
-If your module has a range of functionality (installation, configuration,
-management, etc.) this is the time to mention it.
+You will also need a Zookeeper cluster for Storm to work. The installation of
+Zookeeper is not done in this module, although you need to provide the IP
+address (or hostnames) of the zookeeper servers.
 
+
+<a name="setup"></a>
 ## Setup
 
+
+<a name="what-storm-affects"></a>
 ### What storm affects
 
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form.
+* No package will be installed
+* /opt/storm will contain the storm installation
+* /etc/storm will contain the storm configuration
+* In addition, upstart scripts will be provided for Ubuntu
 
-### Setup Requirements **OPTIONAL**
 
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
+<a name="setup-requirements"></a>
+### Setup Requirements
 
+The module currently only supports Ubuntu (only tested with 14.04)
+
+
+<a name="beginning-with-storm"></a>
 ### Beginning with storm
 
-The very basic steps needed for a user to get the module up and running.
+**Example**: one-machine with all services:
 
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you may wish to include an additional section here: Upgrading
-(For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
+    class {'storm':
+        version => '0.9.3' 
+        
+    }
+
+    include storm::install
+    include storm::config
+
+    include storm::nimbus
+    include storm::drpc
+    include storm::ui
+    include storm::supervisor
+
 
 ## Usage
 
-Put the classes, types, and resources for customizing, configuring, and doing
-the fancy stuff with your module here.
 
 ## Reference
 
-Here, list the classes, types, providers, facts, etc contained in your module.
-This section should include all of the under-the-hood workings of your module so
-people know what the module is touching on their system but don't need to mess
-with things. (We are working on automating this section!)
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc.
-
 ## Development
 
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
 
-## Release Notes/Contributors/Etc **Optional**
-
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You may also add any additional sections you feel are
-necessary or important to include here. Please use the `## ` header.

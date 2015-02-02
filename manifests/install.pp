@@ -32,6 +32,11 @@ class storm::install (
 ) {
     #Install java package
     require java
+    
+    include storm::params
+    
+    package { 'wget': ensure => [latest,installed] }
+        
 
     #Download and extract the storm archive
     exec { 'storm-get':

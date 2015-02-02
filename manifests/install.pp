@@ -31,13 +31,19 @@ class storm::install (
     include storm::params
     
     package { 'wget': ensure => [latest,installed] }
-        
+
+    # Create home directory
+    file { $homedir:
+        ensure => directory
+    }
+
+    $tgzfile = "/var/tmp/apache-storm-${version}.tar.gz"
+    $untardir = "/var/tmp/apache-storm-${version}"
 
     #Download and extract the storm archive
     exec { 'storm-get':
-        command => "wget ${mirror}/apache-storm-${version}/apache-storm-${version}.tar.gz \
-        -O /var/tmp/storm-${version}.tar.gz",
-        creates => "/var/tmp/storm-${version}.tar.gz",
+        command => "wget ${mirror}/apache-storm-${version}/apache-storm-${version}.tar.gz -O ${tgzfile}",
+        creates => $tgzfile,
         path => ['/usr/bin', '/usr/sbin', '/sbin', '/bin'],
         cwd => '/var/tmp',
         notify => Exec['storm-extract'],
@@ -45,14 +51,14 @@ class storm::install (
 
     #Install storm
     exec { 'storm-extract':
-        command => "tar -C /var/tmp -xzf /var/tmp/apache-storm-${version}.tar.gz",
-        creates => "/var/tmp/storm-${version}",
+        command => "tar -C /var/tmp -xzf $tgzfile",
+        creates => $untardir,
         path => ['/usr/bin', '/usr/sbin', '/sbin', '/bin'],
         notify => Exec['storm-install'],
     }
 
     exec { 'storm-install':
-        command => "rsync -auzp --exclude=\"src\" /var/tmp/apache-storm-${version}/ ${homedir}",
+        command => "rsync -auzp --exclude=\"src\" ${untardir}/ ${homedir}",
         creates => "${homedir}/storm-${version}.jar",
         path => ['/usr/bin', '/usr/sbin', '/sbin', 'bin'],
         # notify => Service['storm'],

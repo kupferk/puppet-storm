@@ -1,0 +1,17 @@
+{
+  "name": "kupferk-storm",
+  "version": "0.1.0",
+  "author": "kupferk",
+  "summary": "Install and configure Apache Storm",
+  "license": "Apache 2.0",
+  "source": "https://github.com/kupferk/puppet-storm",
+  "project_page": "https://github.com/kupferk/puppet-storm",
+  "issues_url": "https://github.com/kupferk/puppet-storm/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_range": ">= 1.0.0"
+    }
+  ]
+}
+

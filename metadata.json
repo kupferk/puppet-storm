@@ -1,6 +1,6 @@
 {
   "name": "kupferk-storm",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "kupferk",
   "summary": "Install and configure Apache Storm",
   "license": "Apache 2.0",

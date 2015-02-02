@@ -43,4 +43,5 @@ class storm (
   include java
   
   include storm::install
+  include storm::config
 }

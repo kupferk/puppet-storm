@@ -53,6 +53,7 @@ class storm::install (
         path => ['/usr/bin', '/usr/sbin', '/sbin', '/bin'],
         cwd => '/var/tmp',
         notify => Exec['storm-extract'],
+        require => Package['wget']
     }
 
     #Install storm
@@ -68,7 +69,7 @@ class storm::install (
         creates => "${homedir}/storm-${version}.jar",
         path => ['/usr/bin', '/usr/sbin', '/sbin', 'bin'],
         # notify => Service['storm'],
-        require => File[$homedir],
+        require => [File[$homedir], Package['rsync']],
     }
 }
 

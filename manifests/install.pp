@@ -37,6 +37,11 @@ class storm::install (
         ensure => directory
     }
 
+    # Create logging directory
+    file { $storm_logdir:
+        ensure => directory
+    }
+
     $tgzfile = "/var/tmp/apache-storm-${version}.tar.gz"
     $untardir = "/var/tmp/apache-storm-${version}"
 

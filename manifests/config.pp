@@ -44,7 +44,7 @@ class storm::config inherits storm {
     require => File['/etc/storm'],
     ensure  => present,
     purge   => false,
-    source  => 'puppet:///modules/storm/storm.log.properties',
+    content => template('storm/storm.log.properties.erb'),
     owner   => 'root',
     group   => 'root',
     mode    => '0644'

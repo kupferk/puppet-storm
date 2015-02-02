@@ -6,6 +6,7 @@ class storm::params {
   #_ STORM DEFAULTS _#
   $java_library_path = hiera_array('java_library_path', ['/usr/local/lib', '/opt/local/lib', '/usr/lib'])
   $storm_local_dir   = hiera('storm_local_dir', '/var/lib/storm')
+  $storm_logdir      = hiera('storm_logdir', '/var/log/storm')
   $storm_user        = hiera('storm_user', 'root')
   $storm_home        = hiera('storm_home', '/opt/storm')
   $storm_lib         = hiera('storm_lib', '/opt/storm/lib')

@@ -31,6 +31,7 @@ class storm::install (
     include storm::params
     
     package { 'wget': ensure => [latest,installed] }
+    package { 'rsync': ensure => [latest,installed] }
 
     # Create home directory
     file { $homedir:

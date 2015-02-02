@@ -29,13 +29,14 @@
 #
 # === Authors
 #
-# Author Name <author@domain.com>
+# Kaya Kupferschmidt <k.kupferschmidt@dimajix.de>
 #
 # === Copyright
 #
-# Copyright 2015 Your name here, unless otherwise noted.
+# Copyright 2015 Kaya Kupferschmidt, unless otherwise noted.
 #
 class storm {
-
-
+  include java
+  
+  include storm::install
 }

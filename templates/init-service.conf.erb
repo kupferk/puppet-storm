@@ -11,7 +11,7 @@ script
   . /etc/default/storm-<%= @name %>
 
   # Set STORM Options
-  STORM_CMD="-classpath $STORM_CLASSPATH -Xms$STORM_<%= @name.upcase %>_JVM_MEMORY -Xmx$STORM_<%= @name.upcase %>_JVM_MEMORY -Djava.library.path=\"$JAVA_LIBRARY_PATH\" -Dstorm.options=\"$STORM_OPTIONS\" -Dstorm.home=$STORM_HOME -Dlog4j.configuration=storm.log.properties -Dlogfile.name=supervisor.log $SUPERVISOR_JVM_OPTS <%= @classname %>"
+  STORM_CMD="-classpath $STORM_CLASSPATH -Xms$STORM_<%= @name.upcase %>_JVM_MEMORY -Xmx$STORM_<%= @name.upcase %>_JVM_MEMORY -Djava.library.path=\"$JAVA_LIBRARY_PATH\" -Dstorm.options=\"$STORM_OPTIONS\" -Dstorm.home=$STORM_HOME -Dlogback.configurationFile=storm-logback.xml -Dlogfile.name=<%= @name %>.log $SUPERVISOR_JVM_OPTS <%= @classname %>"
 
   if [ "x$ENABLE" = "xyes" ]; then
     exec start-stop-daemon --start --pidfile ${STORM_PID} --make-pidfile --chuid ${STORM_USER} --chdir ${STORM_HOME} --exec /usr/bin/java -- ${STORM_CMD}

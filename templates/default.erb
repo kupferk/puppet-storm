@@ -8,4 +8,5 @@ STORM_JAR="<%= scope.lookupvar('storm::params::storm_jar') %>"
 STORM_CONF="<%= scope.lookupvar('storm::params::storm_conf') %>"
 STORM_CLASSPATH="<% scope.lookupvar('storm::params::storm_classpath').each do |p| -%>$(echo <%= p %> | tr ' ' ':'):"<% end -%>
 
+
 STORM_OPTIONS="<%= scope.lookupvar('storm::params::storm_options') %>"

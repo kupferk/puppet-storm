@@ -28,7 +28,7 @@
 class storm::install (
     $mirror = $storm::params::storm_mirror,
 ) inherits storm {
-    include storm::params
+    require java
     
     package { 'wget': ensure => [latest,installed] }
     package { 'rsync': ensure => [latest,installed] }

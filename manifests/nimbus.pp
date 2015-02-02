@@ -12,6 +12,7 @@
 #
 class storm::nimbus inherits storm {
   require storm::install
+  require storm::config
 
   # Install nimbus /etc/default
   storm::service { 'nimbus':

@@ -12,6 +12,7 @@
 #
 class storm::drpc inherits storm {
   require storm::install
+  require storm::config
 
   # Install nimbus /etc/default
   storm::service { 'drpc':

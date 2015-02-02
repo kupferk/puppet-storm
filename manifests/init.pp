@@ -69,9 +69,5 @@ class storm (
     
 ) inherits storm::params
 {
-  include java
-  
-  include storm::install
-  include storm::config
 }
 

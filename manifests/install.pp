@@ -27,12 +27,7 @@
 #
 class storm::install (
     $mirror = $storm::params::storm_mirror,
-    $version = $storm::params::storm_version,
-    $homedir = $storm::params::storm_home,
-) {
-    #Install java package
-    require java
-    
+) inherits storm {
     include storm::params
     
     package { 'wget': ensure => [latest,installed] }

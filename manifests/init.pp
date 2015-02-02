@@ -35,7 +35,11 @@
 #
 # Copyright 2015 Kaya Kupferschmidt, unless otherwise noted.
 #
-class storm {
+class storm (
+    $version = $storm::params::storm_version,
+    $homedir = $storm::params::storm_home
+) inherits storm::params
+{
   include java
   
   include storm::install

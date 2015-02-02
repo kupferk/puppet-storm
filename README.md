@@ -56,8 +56,8 @@ The module currently only supports Ubuntu (only tested with 14.04)
 **Example**: one-machine with all services:
 
     class {'storm':
-        version => '0.9.3' 
-        
+        version => '0.9.3', 
+        zookeeper_servers => ['zookeeper1', 'zookeeper2', 'zookeeper3']
     }
 
     include storm::install

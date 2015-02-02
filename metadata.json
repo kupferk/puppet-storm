@@ -7,6 +7,13 @@
   "source": "https://github.com/kupferk/puppet-storm",
   "project_page": "https://github.com/kupferk/puppet-storm",
   "issues_url": "https://github.com/kupferk/puppet-storm/issues",
+  "tags": ["storm"],
+  "operatingsystem_support": [
+    {
+    "operatingsystem": "Ubuntu",
+    "operatingsystemrelease": ["14.04"]
+    }
+  ],
   "dependencies": [
     {
       "name": "puppetlabs-stdlib",

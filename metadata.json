@@ -1,6 +1,6 @@
 {
   "name": "kupferk-storm",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "author": "kupferk",
   "summary": "Install and configure Apache Storm",
   "license": "Apache 2.0",
@@ -14,10 +14,24 @@
     "operatingsystemrelease": ["14.04"]
     }
   ],
+  "requirements": [
+    {
+      "name": "pe",
+      "version_requirement": "3.x"
+    },
+    {
+      "name": "puppet",
+      "version_requirement": "3.x"
+    }
+  ],
   "dependencies": [
     {
       "name": "puppetlabs-stdlib",
       "version_range": ">= 1.0.0"
+    },
+    {
+      "name": "puppetlabs-java",
+      "version_range": ">= 1.3.0"
     },
     {
       "name": "puppetlabs-java",

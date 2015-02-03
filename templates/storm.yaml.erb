@@ -9,7 +9,7 @@ storm.local.mode.zmq: <%= scope.lookupvar('storm::params::storm_local_mode_zmq')
 
 #_ ZOOKEEPER _#
 storm.zookeeper.servers:
-<% scope.lookupvar('storm::params::storm_zookeeper_servers').each do |z| -%>
+<% scope.lookupvar('storm::zookeeper_servers').each do |z| -%>
     - "<%= z %>"
 <% end-%>
 storm.zookeeper.port: <%= scope.lookupvar('storm::zookeeper_port') %>

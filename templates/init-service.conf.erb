@@ -5,6 +5,10 @@ limit nofile 32768 32768
 start on (local-filesystems and net-device-up IFACE=eth0)
 stop on [!12345]
 
+<% if @respawn %>
+respawn
+<% end %>
+
 script
   # Source /etc/default
   . /etc/default/storm

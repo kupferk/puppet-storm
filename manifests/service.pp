@@ -13,7 +13,7 @@
 #                 jvm_memory => '1024m'
 #               }
 #
-define storm::service($classname, $start = 'no', $jvm_memory = '768m', $opts = []) {
+define storm::service($classname, $start = 'no', $jvm_memory = '768m', $respawn = true, $opts = []) {
   require storm::install
 
   file { "/etc/init/storm-${name}.conf":
@@ -21,16 +21,16 @@ define storm::service($classname, $start = 'no', $jvm_memory = '768m', $opts = [
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    notify  => File["/etc/default/storm-${name}"], 
+    notify  => File["/etc/default/storm-${name}"],
   }
-  
+
   file { "/etc/default/storm-${name}":
     # require => Package['storm'],
     content => template('storm/default-service.erb'),
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    notify  => Service["storm-${name}"], 
+    notify  => Service["storm-${name}"],
   }
 
   service { "storm-${name}":

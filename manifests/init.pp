@@ -60,13 +60,16 @@ class storm (
   $drpc_servers = $storm::params::drpc_servers,
   $drpc_invocations_port = $storm::params::drpc_invocations_port,
 
+  $logviewer_port = $storm::params::logviewer_port,
+  $logviewer_childopts = $storm::params::logviewer_childopts,
+
   $supervisor_start_port = $storm::params::supervisor_start_port,
   $supervisor_workers = $storm::params::supervisor_workers,
   $supervisor_childopts = $storm::params::supervisor_childopts,
   $supervisor_enable = $storm::params::supervisor_enable,
 
   $worker_childopts = $storm::params::worker_childopts
-    
+
 ) inherits storm::params
 {
 }

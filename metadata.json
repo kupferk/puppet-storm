@@ -26,15 +26,11 @@
   ],
   "dependencies": [
     {
-      "name": "puppetlabs-stdlib",
+      "name": "puppetlabs/stdlib",
       "version_range": ">= 1.0.0"
     },
     {
-      "name": "puppetlabs-java",
-      "version_range": ">= 1.3.0"
-    },
-    {
-      "name": "puppetlabs-java",
+      "name": "puppetlabs/java",
       "version_range": ">= 1.3.0"
     }
   ]

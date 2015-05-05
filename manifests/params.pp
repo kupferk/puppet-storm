@@ -59,6 +59,7 @@ class storm::params {
   $logviewer_port                       = hiera('logviewer_port', '8000')
   $logviewer_mem                        = hiera('logviewer_mem', '128m')
   $logviewer_childopts                  = hiera('logviewer_childopts', "-Xmx128m")
+  $logviewer_appender                   = hiera('logviewer_appender', "FILE")
 
   #_ SUPERVISOR _#
   $supervisor_mem                       = hiera('supervisor_mem', '1024m')

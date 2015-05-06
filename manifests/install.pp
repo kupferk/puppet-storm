@@ -29,7 +29,7 @@ class storm::install (
     $mirror = $storm::params::storm_mirror,
 ) inherits storm {
     require java
-    
+
     package { 'wget': ensure => [latest,installed] }
     package { 'rsync': ensure => [latest,installed] }
 
@@ -66,7 +66,7 @@ class storm::install (
 
     exec { 'storm-install':
         command => "rsync -auzp --exclude=\"src\" ${untardir}/ ${homedir}",
-        creates => "${homedir}/storm-${version}.jar",
+        creates => "${homedir}/lib/storm-core-${version}.jar",
         path => ['/usr/bin', '/usr/sbin', '/sbin', 'bin'],
         # notify => Service['storm'],
         require => [File[$homedir], Package['rsync']],

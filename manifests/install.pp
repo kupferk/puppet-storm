@@ -65,7 +65,7 @@ class storm::install (
     }
 
     exec { 'storm-install':
-        command => "rsync -auzp --exclude=\"src\" ${untardir}/ ${homedir}",
+        command => "rsync -auzp --delete --exclude=\"src\" ${untardir}/ ${homedir}",
         creates => "${homedir}/lib/storm-core-${version}.jar",
         path => ['/usr/bin', '/usr/sbin', '/sbin', 'bin'],
         # notify => Service['storm'],

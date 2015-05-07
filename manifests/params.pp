@@ -55,6 +55,12 @@ class storm::params {
   $transactional_zookeeper_servers = hiera('transactional_zookeeper_servers', 'null')
   $transactional_zookeeper_port    = hiera('transactional_zookeeper_port', 'null')
 
+  #_ LOGVIEWER _#
+  $logviewer_port                       = hiera('logviewer_port', '8000')
+  $logviewer_mem                        = hiera('logviewer_mem', '128m')
+  $logviewer_childopts                  = hiera('logviewer_childopts', "-Xmx128m")
+  $logviewer_appender                   = hiera('logviewer_appender', "FILE")
+
   #_ SUPERVISOR _#
   $supervisor_mem                       = hiera('supervisor_mem', '1024m')
   $supervisor_start_port                = hiera('supervisor_slots_start_port', '6700')

@@ -41,6 +41,11 @@ drpc.port: <%= scope.lookupvar('storm::drpc_port') %>
 drpc.invocations.port: <%= scope.lookupvar('storm::drpc_invocations_port') %>
 drpc.request.timeout.secs: <%= scope.lookupvar('storm::drpc_request_timeout_secs') %>
 
+#_ LOGVIEWER _#
+logviewer.port: <%= scope.lookupvar('storm::logviewer_port') %>
+logviewer.childopts: <%= scope.lookupvar('storm::logviewer_childopts') %>
+logviewer.appender.name: <%= scope.lookupvar('storm::logviewer_appender') %>
+
 transactional.zookeeper.root: "<%= scope.lookupvar('storm::params::transactional_zookeeper_root') %>"
 transactional.zookeeper.servers: <%= scope.lookupvar('storm::params::transactional_zookeeper_servers') %>
 transactional.zookeeper.port: <%= scope.lookupvar('storm::params::transactional_zookeeper_port') %>

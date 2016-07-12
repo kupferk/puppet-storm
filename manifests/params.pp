@@ -83,7 +83,7 @@ class storm::params {
   $zmq_linger_millis = hiera('zmq_linger_millis', '5000')
 
   #_ TOPOLOGY _#
-  $topology_kryo_register                      = hiera_array('topology_kryo.register', [''])
+  $topology_kryo_register                      = hiera_array('topology_kryo_register', [''])
   $topology_debug                              = hiera('topology_debug', 'false')
   $topology_optimize                           = hiera('topology_optimize', 'true')
   $topology_workers                            = hiera('topology_workers', '1')
